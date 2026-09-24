@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven3' // Matches the name configured in Jenkins Tools
+        jdk 'Java17'    // Matches the name configured in Jenkins Tools
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build & Test') {
+            steps {
+                sh 'mvn clean test package'
+            }
+        }
+    }
+}
