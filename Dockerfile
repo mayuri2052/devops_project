@@ -6,7 +6,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the runtime production image
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:20-jre-alpine
 WORKDIR /app
 # Copy the compiled JAR file from the builder stage
 COPY --from=builder /app/target/basic-java-app-1.0-SNAPSHOT.jar app.jar
